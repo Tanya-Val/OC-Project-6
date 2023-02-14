@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
+//Import auth middleware
 const auth = require('../middleware/auth');
 const multer = require('../middleware/multer-config');
 const { saucePropertyInputs, validate } = require('../middleware/validator');
 
 const saucesCtrl = require('../controllers/sauces');
 
+//Routers with auth 
 router.get('/', auth, saucesCtrl.getAllSauces);
 router.get('/:id', auth, saucesCtrl.getOneSauce);
 router.delete('/:id', auth, saucesCtrl.deleteSauce);
