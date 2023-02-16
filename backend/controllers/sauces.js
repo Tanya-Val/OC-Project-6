@@ -1,6 +1,7 @@
 const Sauce = require('../models/sauce');
 const fs = require('fs');
 
+//Function to create a new item
 exports.createSauce = (req, res) => {
     req.body.sauce = JSON.parse(req.body.sauce);
     const url = req.protocol + '://' + req.get('host');
@@ -17,6 +18,7 @@ exports.createSauce = (req, res) => {
         usersLiked: [],
         usersDisliked: []
     });
+    //Save to the database
     sauce.save().then(() => {
         res.status(201).json({
             message: 'Post saved successfully!'
@@ -42,6 +44,7 @@ exports.getOneSauce = (req, res) => {
 };
 
 exports.modifySauce = (req, res) => {
+    //Declare a dinamic param for the id
     let sauce = new Sauce({_id: req.params._id});
     if (req.file) {
         Sauce.findOne({_id: req.params.id}).then((sauce_replace) => {
@@ -120,6 +123,7 @@ exports.deleteSauce = (req, res) => {
     });
 };
 
+//Functiot to get the list of items
 exports.getAllSauces = (req, res) => {
     Sauce.find().then((sauces) => {
         res.status(200).json(sauces);

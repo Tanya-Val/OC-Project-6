@@ -14,11 +14,9 @@ const userRoutes = require('./routes/user');
 
 const path = require('path');
 
-/*
-https://github.com/motdotla/dotenv#Usage
-Authentication to MongoDB Atlas by means of query string in dotenv file, '.env' .
-*/
-const mongo = 'mongodb+srv://oc-project6:8PPDu9fCYRc6S314@cluster0.mh4jdwo.mongodb.net/?retryWrites=true&w=majority';
+//MongoDB connection with .env
+const mongo = process.env.MongoDB_CONNECTION
+
 
 //Parse the body request.
 app.use(express.json());
