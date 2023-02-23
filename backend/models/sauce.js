@@ -1,3 +1,5 @@
+//-----Sauce Models-----
+
 const mongoose = require('mongoose');
 
 //Data schema with the fields for each Sauce, their type, and whether or not they are a required field.
@@ -15,5 +17,7 @@ const sauceSchema = mongoose.Schema({
     usersDisliked: {type: Array, required: false}
 });
 
-//When imported, can used to query, insert, update, and delete documents in the associated collection
+//When imported, can be used to query, insert, update, and delete documents in the associated collection
 module.exports = mongoose.model('Sauce', sauceSchema); 
+
+//-----End------

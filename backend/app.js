@@ -1,14 +1,14 @@
-//mongodb+srv://oc-project6:8PPDu9fCYRc6S314@cluster0.mh4jdwo.mongodb.net/?retryWrites=true&w=majority
-
+// Import the necessary modules
 const express = require('express');
+// .env configuration
 require('dotenv').config();
 
 const app = express();
 
-//Facilitates interactions between Express app and MongoDB database
+// Facilitates interactions between Express app and MongoDB database
 const mongoose = require('mongoose');
 
-//imports the routers
+// Imports the routers
 const saucesRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
 
@@ -21,7 +21,7 @@ const mongo = process.env.MongoDB_CONNECTION
 //Parse the body request.
 app.use(express.json());
 
-//Allows requests from all origins to access your API
+//Allows Cross-Origin Resource Sharing (CORS) for all requests
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -46,4 +46,5 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/sauces', saucesRoutes);
 app.use('/api/auth', userRoutes);
 
+// Export the Express application for use in other modules
 module.exports = app;
