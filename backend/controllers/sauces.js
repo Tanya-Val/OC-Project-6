@@ -1,3 +1,5 @@
+//-----Sauce realated logic------
+
 // Imports the Sauce model, which represents the schema for the sauces collection in the database
 const Sauce = require('../models/sauce');
 
@@ -250,3 +252,5 @@ exports.likeSauce = (req, res) => {
         });
     });
 }; 
+
+//-----End-----
